@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Card from "../_components/Card.jsx";
-import Navbar from "../_components/Navbar.jsx";
+import Card from "../ui/Card.jsx";
+import Navbar from "../ui/Navbar.jsx";
 
 const SavedPage = () => {
   const [savedItems, setSavedItems] = useState([]);

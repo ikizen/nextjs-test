@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useState, useEffect } from "react";
 
 const Card = ({ data }) => {
@@ -33,9 +34,10 @@ const Card = ({ data }) => {
       <p>Eye Color: {data.eye_color}</p>
       <button
         onClick={handleSave}
-        className={`mt-4 px-4 py-2 rounded ${
-          isSaved ? "bg-red-500 text-white" : " bg-blue-500 text-white"
-        }`}
+        className={clsx(
+          `mt-4 px-4 py-2 rounded
+          ${isSaved ? "bg-red-500 text-white" : " bg-blue-500 text-white"}`
+        )}
       >
         {isSaved ? "Remove" : "Save"}
       </button>
