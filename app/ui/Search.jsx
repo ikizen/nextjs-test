@@ -17,7 +17,7 @@ const Search = ({ text, setText, fetchData }) => {
         placeholder="Search for a character..."
         value={text}
         onChange={handleChange}
-        className="px-4 py-2 border rounded-lg w-full max-w-md border-transparent transition-colors hover:border-gray-300 border-neutral-700 bg-neutral-800/30"
+        className="px-4 py-2 text-black placeholder:text-gray-300 dark:placeholder:text-gray-500  border rounded-lg w-full max-w-md border-transparent transition-colors hover:border-gray-300 border-neutral-700 dark:bg-cyan-500 bg-neutral-800/30"
       />
       <button className="ml-2 px-4 py-2 bg-cyan-700 text-white rounded-lg hover:bg-cyan-600 transition-colors">
         Search

@@ -78,7 +78,7 @@ const HomePage = () => {
                 <SkeletonCard key={index} />
               )) // Show skeletons
             : results.map((item) => <Card key={item.url} data={item} />)}
-          {!notFound && <div>Not Found</div>}
+          {!notFound && !loading && <div>Not Found</div>}
         </div>
         {!loading && !isSearching && (
           <Pagination page={page} setPage={setPage} totalPages={totalPages} />
