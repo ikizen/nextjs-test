@@ -1,16 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Navbar from "./ui/Navbar.jsx";
-import Search from "./ui/Search.jsx";
+import Search from "./ui/Search.tsx";
 import { useDebouncedCallback } from "use-debounce";
-import SkeletonCard from "./ui/SkeletonCard.jsx";
-import Card from "./ui/Card.jsx";
-import Pagination from "./ui/Pagination.jsx";
+import SkeletonCard from "./ui/SkeletonCard.tsx";
+import Pagination from "./ui/Pagination.tsx";
+import CardCn from "./components/ui/CardCn.tsx";
+import type { SWAPIResult } from "../lib/swapi.ts";
 
 const HomePage = () => {
   const [text, setText] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<SWAPIResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -67,7 +67,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="p-8 ">
+      <div className="p-8">
         <h1 className="mb-6 font-bold text-2xl text-center">
           Star Wars Characters
         </h1>
@@ -77,7 +77,7 @@ const HomePage = () => {
             ? Array.from({ length: 10 }).map((_, index) => (
                 <SkeletonCard key={index} />
               )) // Show skeletons
-            : results.map((item) => <Card key={item.url} data={item} />)}
+            : results.map((item) => <CardCn key={item.url} data={item} />)}
           {!notFound && !loading && <div>Not Found</div>}
         </div>
         {!loading && !isSearching && (

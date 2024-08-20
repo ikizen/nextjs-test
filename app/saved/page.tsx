@@ -1,25 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Card from "../ui/Card.jsx";
-import Navbar from "../ui/Navbar.jsx";
+import Card from "../ui/Card.tsx";
+import Navbar from "../ui/Navbar.tsx";
 
 const SavedPage = () => {
   const [savedItems, setSavedItems] = useState([]);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("savedItems")) || [];
+    const items = JSON.parse(localStorage.getItem("savedItems")!) || [];
     setSavedItems(items);
   }, []);
 
   return (
     <>
       <div className="p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1 className="mb-6 font-bold text-2xl text-center">
           Saved Characters
         </h1>
         {savedItems.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {savedItems.map((item) => (
               <Card key={item.url} data={item} />
             ))}
