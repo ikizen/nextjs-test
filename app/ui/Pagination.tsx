@@ -1,21 +1,23 @@
+import { Button } from "@/components/ui/button";
+
 const Pagination = ({ page, setPage, totalPages }) => {
   return (
-    <div className="flex justify-center items-center space-x-4 mt-4 ">
-      <button
+    <div className="flex justify-center items-center space-x-4 mt-4">
+      <Button
         onClick={() => setPage(page - 1)}
         disabled={page === 1}
-        className="min-w-24 px-4 py-2 cursor-pointer border border-transparent bg-gray-500 rounded disabled:opacity-50"
+        className="px-4 py-2 min-w-24"
       >
         Previous
-      </button>
+      </Button>
       <span>{`Page ${page} of ${totalPages}`}</span>
-      <button
+      <Button
         onClick={() => setPage(page + 1)}
         disabled={page === totalPages}
-        className="min-w-24 px-4 py-2 cursor-pointer border border-transparent bg-gray-500 rounded disabled:opacity-50"
+        className="px-4 py-2 min-w-24"
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 };

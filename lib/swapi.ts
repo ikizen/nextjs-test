@@ -1,4 +1,5 @@
-export type SWAPIResult = {
+// lib/swapi.ts
+export interface SWAPIResult {
   name: string;
   height: string;
   mass: string;
@@ -7,5 +8,12 @@ export type SWAPIResult = {
   eye_color: string;
   birth_year: string;
   gender: string;
+  homeworld: string;
+  films: string[];
+  species: string[];
+  vehicles: string[];
+  starships: string[];
+  created: string;
+  edited: string;
   url: string;
-};
+}

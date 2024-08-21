@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Search from "./ui/Search.tsx";
 import { useDebouncedCallback } from "use-debounce";
-import SkeletonCard from "./ui/SkeletonCard.tsx";
 import Pagination from "./ui/Pagination.tsx";
 import CardCn from "./components/ui/CardCn.tsx";
+import type { SWAPIResult } from "../lib/swapi.ts";
+import InputCn from "./components/ui/InputCn.tsx";
+import SkeletonCard from "./components/ui/SkeletonCard.tsx";
 import type { SWAPIResult } from "../lib/swapi.ts";
 
 const HomePage = () => {
@@ -71,7 +72,7 @@ const HomePage = () => {
         <h1 className="mb-6 font-bold text-2xl text-center">
           Star Wars Characters
         </h1>
-        <Search text={text} setText={setText} fetchData={fetchData} />
+        <InputCn text={text} setText={setText} fetchData={fetchData} />
         <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {loading
             ? Array.from({ length: 10 }).map((_, index) => (

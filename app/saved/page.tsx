@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Card from "../ui/Card.tsx";
-import Navbar from "../ui/Navbar.tsx";
+import CardCn from "../components/ui/CardCn.tsx";
 
 const SavedPage = () => {
   const [savedItems, setSavedItems] = useState([]);
@@ -21,7 +20,7 @@ const SavedPage = () => {
         {savedItems.length > 0 ? (
           <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {savedItems.map((item) => (
-              <Card key={item.url} data={item} />
+              <CardCn key={item.url} data={item} />
             ))}
           </div>
         ) : (

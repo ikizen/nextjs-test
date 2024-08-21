@@ -8,8 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import type { SWAPIResult } from "@/lib/swapi";
+
+interface CardCnProps {
+  data: SWAPIResult;
+}
 
 function CardCn({ data }) {
   const [isSaved, setIsSaved] = useState(false);
@@ -39,10 +44,15 @@ function CardCn({ data }) {
     localStorage.setItem("savedItems", JSON.stringify(savedItems));
     setIsSaved(!isSaved);
   };
+
+  const personNameSlug = data.name.toLowerCase().replace(/ /g, "-");
+
   return (
-    <Card className="dark:hover:border-gray-300 hover:dark:border-neutral-700 hover:border-cyan-500 hover:bg-cyan-400 hover:dark:bg-cyan-950 border border-transparent rounded-lg transition-colors cursor-pointer group">
+    <Card>
       <CardHeader>
-        <CardTitle>{data.name}</CardTitle>
+        <CardTitle>
+          <Link href={`/person/${personNameSlug}`}>{data.name}</Link>
+        </CardTitle>
         <CardDescription>Card Description</CardDescription>
       </CardHeader>
       <CardContent>
@@ -53,15 +63,12 @@ function CardCn({ data }) {
         <p>Eye Color: {data.eye_color}</p>
       </CardContent>
       <CardFooter>
-        <button
+        <Button
           onClick={handleSave}
-          className={clsx(
-            `mt-4 px-4 py-2 rounded flex justify-center
-          ${isSaved ? "bg-red-500 text-white" : " bg-blue-500 text-white"}`
-          )}
+          className={clsx(`flex justify-center mt-4 px-4 py-2 rounded`)}
         >
           {isSaved ? "Remove" : "Save"}
-        </button>
+        </Button>
       </CardFooter>
     </Card>
   );
