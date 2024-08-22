@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import CardCn from "../components/ui/CardCn.tsx";
+import type { SWAPIResult } from "@/lib/swapi";
 
 const SavedPage = () => {
-  const [savedItems, setSavedItems] = useState([]);
+  const [savedItems, setSavedItems] = useState<SWAPIResult[]>([]);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("savedItems")!) || [];
