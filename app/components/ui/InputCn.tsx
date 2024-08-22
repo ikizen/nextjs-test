@@ -14,7 +14,7 @@ function InputCn({ text, setText, fetchData }: InputCnProps) {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    fetchData(text, 1);
+    fetchData(text);
   };
   return (
     <form onSubmit={handleSubmit} className="flex justify-center mb-6">
