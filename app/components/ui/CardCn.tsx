@@ -17,7 +17,7 @@ interface CardCnProps {
   data: SWAPIResult;
 }
 
-function CardCn({ data }) {
+function CardCn({ data }: CardCnProps) {
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
