@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import type { SWAPIResult } from "@/lib/swapi";
+import { toast } from "sonner";
 
 interface CardCnProps {
   data: SWAPIResult;
@@ -36,9 +37,11 @@ function CardCn({ data }) {
       savedItems = savedItems.filter(
         (savedItem: { url: any }) => savedItem.url !== data.url
       );
+      toast(`Card ${data.name} has been removed!`);
     } else {
       // Add to saved items
       savedItems.push(data);
+      toast(`Card ${data.name} has been added to Saved!`);
     }
 
     localStorage.setItem("savedItems", JSON.stringify(savedItems));
@@ -51,7 +54,9 @@ function CardCn({ data }) {
     <Card>
       <CardHeader>
         <CardTitle>
-          <Link href={`/person/${personNameSlug}`}>{data.name}</Link>
+          <Link href={`/person/${personNameSlug}`}>
+            <div className="hover:underline decoraion-2">{data.name}</div>
+          </Link>
         </CardTitle>
         <CardDescription>Card Description</CardDescription>
       </CardHeader>
@@ -65,7 +70,7 @@ function CardCn({ data }) {
       <CardFooter>
         <Button
           onClick={handleSave}
-          className={clsx(`flex justify-center mt-4 px-4 py-2 rounded`)}
+          className={clsx(`flex justify-center mt-4 rounded`)}
         >
           {isSaved ? "Remove" : "Save"}
         </Button>

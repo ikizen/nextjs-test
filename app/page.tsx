@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import Pagination from "./ui/Pagination.tsx";
+import Pagination from "./components/Pagination.tsx";
 import CardCn from "./components/ui/CardCn.tsx";
 import type { SWAPIResult } from "../lib/swapi.ts";
 import InputCn from "./components/ui/InputCn.tsx";
 import SkeletonCard from "./components/ui/SkeletonCard.tsx";
-import type { SWAPIResult } from "../lib/swapi.ts";
 
 const HomePage = () => {
   const [text, setText] = useState("");

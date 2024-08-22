@@ -1,9 +1,18 @@
 // app/person/[name]/page.tsx
 "use client";
-import { useRouter } from "next/navigation";
+
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { SWAPIResult } from "@/lib/swapi";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default function PersonDetail() {
   const pathname = usePathname();
@@ -43,15 +52,34 @@ export default function PersonDetail() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="p-8">
-      <h1 className="mb-4 font-bold text-2xl">{person.name}</h1>
-      <p>Height: {person.height}</p>
-      <p>Mass: {person.mass}</p>
-      <p>Hair Color: {person.hair_color}</p>
-      <p>Skin Color: {person.skin_color}</p>
-      <p>Eye Color: {person.eye_color}</p>
-      <p>Birth Year: {person.birth_year}</p>
-      <p>Gender: {person.gender}</p>
+    <div className="flex flex-col justify-center p-8">
+      <Table>
+        <TableCaption className="text-4xl">Card - {person.name}</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Name</TableHead>
+            <TableHead>Mass</TableHead>
+            <TableHead>Height</TableHead>
+            <TableHead className="">Hair color</TableHead>
+            <TableHead>Skin color</TableHead>
+            <TableHead>Eye color</TableHead>
+            <TableHead>Birth year</TableHead>
+            <TableHead>Gender</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell className="font-medium">{person.name}</TableCell>
+            <TableCell>{person.mass}</TableCell>
+            <TableCell>{person.height}</TableCell>
+            <TableCell className="">{person.hair_color}</TableCell>
+            <TableCell>{person.skin_color}</TableCell>
+            <TableCell>{person.eye_color}</TableCell>
+            <TableCell>{person.birth_year}</TableCell>
+            <TableCell>{person.gender}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
     </div>
   );
 }
