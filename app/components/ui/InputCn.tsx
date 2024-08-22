@@ -1,7 +1,13 @@
 import React from "react";
 import { Input } from "@/components/ui/input";
 
-function InputCn({ text, setText, fetchData }) {
+interface InputCnProps {
+  text: string;
+  setText: (value: string) => void;
+  fetchData: (searchText: string) => void;
+}
+
+function InputCn({ text, setText, fetchData }: InputCnProps) {
   const handleChange = (e: { target: { value: any } }) => {
     setText(e.target.value);
   };
